@@ -18,7 +18,7 @@ export default {
   css: ["~/assets/styles/main.css"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: ["~plugins/firstUpper.js"],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -31,12 +31,19 @@ export default {
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
     "@nuxtjs/tailwindcss",
+    "@nuxtjs/toast",
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: "https://pokeapi.co/api/v2",
+  },
+
+  // @nuxtjs/toast configuration
+  toast: {
+    position: "bottom-right",
+    duration: 1500,
   },
 
   loading: {

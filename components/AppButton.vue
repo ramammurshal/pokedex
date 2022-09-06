@@ -13,12 +13,13 @@ export default {
   props: {
     link: {
       type: String,
-      required: true,
     },
   },
   methods: {
     handleRedirect() {
-      this.$router.push(this.link);
+      if (this.link) {
+        this.$router.push(this.link);
+      }
     },
   },
 };

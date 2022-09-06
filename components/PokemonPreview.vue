@@ -1,8 +1,7 @@
 <template>
-  <nuxt-link :to="pokemon.name">
-    <h1 class="text-center bg-slate-500 py-3 rounded">
-      😎 {{ pokemon.name }}
-      <!-- to do use the filter! -->
+  <nuxt-link :to="link" class="hover:scale-95 transition-all">
+    <h1 class="text-center bg-slate-500 hover:bg-slate-600 py-3 rounded">
+      😎 {{ pokemon.name | firstUpper }}
     </h1>
   </nuxt-link>
 </template>
@@ -14,6 +13,11 @@ export default {
     pokemon: {
       type: Object,
       required: true,
+    },
+  },
+  computed: {
+    link() {
+      return `/pokemon/${this.pokemon.name}`;
     },
   },
 };
