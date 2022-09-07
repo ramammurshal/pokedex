@@ -19,12 +19,14 @@ export const mutations = {
   addPokemon(state, pokemonData) {
     state.myList.push(pokemonData);
   },
+  removePokemon(state, savedPokemonData) {
+    state.myList = savedPokemonData;
+  },
 };
 
 export const actions = {
   init(vuexContext) {
     if (vuexContext.state.init === 1 && process.client) {
-      console.log("run");
       const myList = JSON.parse(localStorage.getItem("myPokemon"));
       if (myList) {
         vuexContext.commit("init", myList);
@@ -49,13 +51,26 @@ export const actions = {
         this.$toast.error("Pokemon nickname already exists 😣, try againn!");
       } else {
         savedData.push(pokemonData);
+
+        vuexContext.commit("addPokemon", pokemonData);
+        localStorage.setItem("myPokemon", JSON.stringify(savedData));
+
+        this.$toast.success("Successfully added pokemon to your list 🎉✨");
+        this.$router.push("/");
       }
     }
+  },
+  removePokemon(vuexContext, pokemonData) {
+    const savedData = [];
+    const localStorageData = JSON.parse(localStorage.getItem("myPokemon"));
 
-    vuexContext.commit("addPokemon", pokemonData);
-    localStorage.setItem("myPokemon", JSON.stringify(savedData));
+    if (localStorageData) {
+      const savedData = localStorageData.filter((item) => {
+        return item.nickname !== pokemonData.nickname;
+      });
 
-    this.$toast.success("Successfully added pokemon to your list 🎉✨");
-    this.$router.push("/");
+      localStorage.setItem("myPokemon", JSON.stringify(savedData));
+      vuexContext.commit("removePokemon", savedData);
+    }
   },
 };

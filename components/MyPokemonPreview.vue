@@ -1,5 +1,5 @@
 <template>
-  <div class="hover:scale-[99%] transition-all">
+  <div class="hover:scale-[98.5%] transition-all">
     <div
       class="text-center bg-slate-500 hover:bg-slate-600 py-3 rounded flex px-4 mb-4"
     >
@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     handleRemove() {
-      console.log("will be removed!");
+      this.$store.dispatch("removePokemon", this.pokemon);
     },
   },
 };

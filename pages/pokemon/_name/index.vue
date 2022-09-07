@@ -11,21 +11,29 @@
       <h1 class="text-3xl font-bold">
         😎 {{ $route.params.name | firstUpper }} 😎
       </h1>
-      <!-- moves -->
-      <h3 class="mt-5 mb-3 text-yellow-400 font-bold text-xl">Moves 👣</h3>
-      <ul>
-        <li v-for="move in moveList" :key="move">
-          {{ move }}
-        </li>
-        <li>And more...</li>
-      </ul>
-      <!-- types -->
-      <h3 class="mt-5 mb-3 text-yellow-400 font-bold text-xl">Types 👁‍🗨</h3>
-      <ul class="mb-5">
-        <li v-for="type in typeList" :key="type">
-          {{ type | firstUpper }}
-        </li>
-      </ul>
+      <hr class="my-6" />
+      <div class="grid grid-cols-2 gap-2">
+        <!-- moves -->
+        <div>
+          <h3 class="mt-5 mb-3 text-yellow-400 font-bold text-xl">Moves 👣</h3>
+          <ul>
+            <li v-for="move in moveList" :key="move">
+              {{ move }}
+            </li>
+            <li>And more...</li>
+          </ul>
+        </div>
+        <!-- types -->
+        <div>
+          <h3 class="mt-5 mb-3 text-yellow-400 font-bold text-xl">Types 👁‍🗨</h3>
+          <ul>
+            <li v-for="type in typeList" :key="type">
+              {{ type | firstUpper }}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <hr class="my-8" />
       <!-- catch pokemon -->
       <button
         @click="handleCatch"
