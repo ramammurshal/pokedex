@@ -43,7 +43,7 @@ export default {
   // @nuxtjs/toast configuration
   toast: {
     position: "bottom-right",
-    duration: 1500,
+    duration: 2000,
   },
 
   loading: {

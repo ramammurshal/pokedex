@@ -79,45 +79,29 @@ export default {
   },
   methods: {
     handleCatch() {
-      const possibility = this.getChance();
-
       this.btnDisable = true;
-      setTimeout(() => {
-        this.btnDisable = false;
 
-        if (possibility) {
-          const nickname = window.prompt("Please enter a pokemon nickname?");
-          if (!nickname) {
-            this.$toast.error("Nickname is empty, please try again!!", {
-              text: "Close",
-              onClick: (e, toastObject) => {
-                toastObject.goAway(0);
-              },
-            });
-          } else {
-            console.log("will be stored in localStorage");
-            // create store to do this actions!
-          }
+      if (this.getChance()) {
+        const nickname = window.prompt(
+          "Pokemon catched! Please enter a nickname!..."
+        );
+        if (nickname) {
+          this.$store.dispatch("addPokemon", {
+            nickname,
+            pokemonName: this.pokemon.name,
+          });
+        } else {
+          this.$toast.error("Pokemon nickname is empty!!", {
+            closeOnSwipe: false,
+          });
         }
-      }, 1500);
-
-      if (possibility) {
-        this.$toast.success("Yayy, pokemon catched!!!", {
-          action: {
-            text: "Close",
-            onClick: (e, toastObject) => {
-              toastObject.goAway(0);
-            },
-          },
-        });
+        this.btnDisable = false;
       } else {
+        setTimeout(() => {
+          this.btnDisable = false;
+        }, 2000);
         this.$toast.error("Failed to catch pokemon, try again!!!", {
-          action: {
-            text: "Close",
-            onClick: (e, toastObject) => {
-              toastObject.goAway(0);
-            },
-          },
+          closeOnSwipe: false,
         });
       }
     },
