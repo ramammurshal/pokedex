@@ -44,6 +44,7 @@ export default {
   toast: {
     position: "bottom-right",
     duration: 2000,
+    closeOnSwipe: false,
   },
 
   loading: {

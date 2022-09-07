@@ -83,7 +83,7 @@ export default {
 
       if (this.getChance()) {
         const nickname = window.prompt(
-          "Pokemon catched! Please enter a nickname!..."
+          "Pokemon catched 🎉! Please enter a nickname!..."
         );
         if (nickname) {
           this.$store.dispatch("addPokemon", {
@@ -91,18 +91,14 @@ export default {
             pokemonName: this.pokemon.name,
           });
         } else {
-          this.$toast.error("Pokemon nickname is empty!!", {
-            closeOnSwipe: false,
-          });
+          this.$toast.error("Pokemon nickname is empty 😣!!");
         }
         this.btnDisable = false;
       } else {
         setTimeout(() => {
           this.btnDisable = false;
         }, 2000);
-        this.$toast.error("Failed to catch pokemon, try again!!!", {
-          closeOnSwipe: false,
-        });
+        this.$toast.error("Failed to catch pokemon 😣, try again!!!");
       }
     },
     getChance() {

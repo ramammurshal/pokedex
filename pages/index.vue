@@ -27,13 +27,13 @@ export default {
     AppButton,
     MyPokemonPreview,
   },
-  data() {
-    return {
-      myPokemon: [],
-    };
+  created() {
+    this.$store.dispatch("init");
   },
-  mounted() {
-    this.myPokemon = JSON.parse(localStorage.getItem("myPokemon"));
+  computed: {
+    myPokemon() {
+      return this.$store.getters.getMyList;
+    },
   },
 };
 </script>
