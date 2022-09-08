@@ -14,7 +14,7 @@
       </p>
     </client-only>
     <div class="flex justify-center">
-      <AppButton link="/pokemon">Search Other Pokemon ▶</AppButton>
+      <AppButton link="/pokemon">Search Pokemon ▶</AppButton>
     </div>
   </div>
 </template>
