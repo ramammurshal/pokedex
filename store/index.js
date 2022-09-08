@@ -40,6 +40,12 @@ export const actions = {
 
     if (!localStorageData) {
       savedData.push(pokemonData);
+
+      vuexContext.commit("addPokemon", pokemonData);
+      localStorage.setItem("myPokemon", JSON.stringify(savedData));
+
+      this.$toast.success("Successfully added pokemon to your list 🎉✨");
+      this.$router.push("/");
     } else {
       savedData = localStorageData;
 
